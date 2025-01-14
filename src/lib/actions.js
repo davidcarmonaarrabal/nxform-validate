@@ -5,17 +5,17 @@ import { z } from "zod";
 const schema = z.object({
     id: z.union([z.coerce.number(), z.string().nullish()]),
     nombre: z.string().trim()
-        .min(1, "Al menos debe tener una letra")
-        .max(5, "Como máximo debe haber 5 letras"),
+        .min(2, "Al menos debe tener 2 letra")
+        .max(8, "Como máximo debe haber 8 letras"),
     edad: z.coerce.number()
-        .min(18, "La edad mínima debe ser 18 años")
-        .max(65, "La edad máxima debe ser 65 años"),
+        .min(13, "La edad mínima debe ser 13 años")
+        .max(30, "La edad máxima debe ser 30 años"),
     telefono: z.string().trim()
-        .regex(/[678]{1}[0-9]{8}/, "Escribe 9 dígitos, siendo el primero 6,7 u 8"),
+        .regex(/[69]{1}[0-9]{8}/, "Escribe 9 dígitos, siendo el primero 6 (móvil) o 9 (fijo)"),
     email: z.string().email({ message: "Email no válido" }),
     fecha: z.coerce.date()
-        .min(new Date("2024-01-01"), "La fecha debe estar dentro del año 2024")
-        .max(new Date("2024-12-31"), "La fecha debe estar dentro del año 2024"),
+        .min(new Date("2025-01-01"), "La fecha debe estar dentro del año 2025")
+        .max(new Date("2025-12-31"), "La fecha debe estar dentro del año 2025"),
     comentario: z.string().optional()
 })
 
